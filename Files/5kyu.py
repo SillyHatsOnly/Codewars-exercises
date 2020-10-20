@@ -35,3 +35,26 @@ def pig_it(text):
     return string_2
 
 '''=================================================================================='''
+'''
+Consider the following expansion:
+solve("3(ab)") = "ababab"     -- because "ab" repeats 3 times
+solve("2(a3(b))" = "abbbabbb" -- because "a3(b)" == "abbb", which repeats twice.
+Given a string, return the expansion of that string.
+Input will consist of only lowercase letters and numbers (1 to 9) in valid parenthesis. There will be no letters or numbers after the last closing parenthesis.
+More examples in test cases.
+Good luck!
+'''
+
+def solve(st):
+    res=''
+    clear_st = st.replace('(','').replace(')','')
+    for i in range(len(clear_st)-1, -1, -1):
+        try:
+            if type(int(clear_st[i])) == int:
+                res *= int(clear_st[i])
+        except:
+            res = clear_st[i] + res
+    return res
+
+#but better way - use str.isalpha() and str.isdigit()
+'''=================================================================================='''
